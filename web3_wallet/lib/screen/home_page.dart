@@ -15,7 +15,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late W3MService _w3mService;
-  // Timer? _sessionCheckTimer
   void _initializeService() async {
     _w3mService = W3MService(
       projectId: '91fea5ea39fc5898af040c6fd6c478c2',
