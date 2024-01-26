@@ -1,39 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:web3_wallet/screen/home_page.dart';
-import 'package:web3_wallet/screen/temp.dart';
+import 'package:web3modal_flutter/theme/w3m_colors.dart';
+import 'package:web3modal_flutter/theme/w3m_radiuses.dart';
+import 'package:web3modal_flutter/theme/w3m_theme_data.dart';
+import 'package:web3modal_flutter/theme/w3m_theme_widget.dart';
 
 void main() {
-  runApp(const MyApp());
+  const bool isDarkMode = false;
+
+  final themeData = Web3ModalThemeData(
+    lightColors: Web3ModalColors.lightMode.copyWith(
+      accent100: Colors.green,
+      background125: Colors.white,
+    ),
+    darkColors: Web3ModalColors.darkMode.copyWith(
+      accent100: Colors.green,
+      background125: Colors.brown,
+    ),
+    radiuses: Web3ModalRadiuses.circular,
+  );
+  runApp(Web3ModalTheme(
+      isDarkMode: isDarkMode, themeData: themeData, child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Web3 Wallet',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+        ),
         useMaterial3: true,
       ),
-      home: MyHomePage(),
+      home: const HomePage(),
     );
   }
 }
